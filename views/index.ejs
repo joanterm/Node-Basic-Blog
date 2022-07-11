@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joanna's Blog | <%=title%></title>
+</head>
+<body>
+
+    <h1>HOME PAGE</h1>
+    <a href="/">HOME</a>
+    <a href="/about">ABOUT</a>
+    <a href="/blogs/create">Create new Blog</a>
+
+    <div>
+        <h2>All my blogs:</h2>
+        <% if (blogs.length > 0) { %>
+            <% blogs.map((item) => { %>
+                <h3><%=item.name %></h3>
+                <p><%=item.snippet %></p>
+           <% }) %>
+       <% } %>
+    </div>
+</body>
+</html>
