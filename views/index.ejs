@@ -1,16 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Joanna's Blog | <%=title%></title>
+    <%-include("./partials/head.ejs")%>
 </head>
 <body>
-
-    <h1>HOME PAGE</h1>
-    <a href="/">HOME</a>
-    <a href="/about">ABOUT</a>
-    <a href="/blogs/create">Create new Blog</a>
+    <%-include("./partials/nav.ejs")%>
 
     <div>
         <h2>All my blogs:</h2>
