@@ -1,10 +1,12 @@
 const express = require("express")
 const mongoose = require("mongoose")
+require('dotenv').config()
 //set up express
 const app = express()
 
 //connect to mongoDB
-const dbUser = "mongodb+srv://joannaterm:jk6HV@cluster0.a9gur.mongodb.net/?retryWrites=true&w=majority"
+const dbUser = process.env.MONGOURI
+// const dbUser = "mongodb+srv://joannaterm:jk6HV@cluster0.a9gur.mongodb.net/?retryWrites=true&w=majority"
 mongoose.connect(dbUser)
     .then((result) => {
         console.log("connected to mongodb")
