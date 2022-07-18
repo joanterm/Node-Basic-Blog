@@ -8,12 +8,13 @@ const dbUser = "mongodb+srv://joannaterm:jk6HV@cluster0.a9gur.mongodb.net/?retry
 mongoose.connect(dbUser)
     .then((result) => {
         console.log("connected to mongodb")
+        app.listen(3000)
     })
     .catch((err) => {
         console.log(err)
     })
 
-app.listen(3000)
+// app.listen(3000)
 
 //set up EJS
 app.set("view engine", "ejs")
