@@ -1,8 +1,17 @@
 const express = require("express")
+
+//set up express
 const app = express()
 
+//connect to mongoDB
+const dbUser = "mongodb+srv://joannaterm:jk6HV@cluster0.a9gur.mongodb.net/?retryWrites=true&w=majority"
+
 app.listen(3000)
+
+//set up EJS
 app.set("view engine", "ejs")
+
+//middleware (connect css stylesheet)
 app.use(express.static("public"))
 
 app.get("/", (req, res) => {
