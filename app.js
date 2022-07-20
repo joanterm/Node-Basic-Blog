@@ -1,6 +1,7 @@
 const express = require("express")
 const mongoose = require("mongoose")
 require('dotenv').config()
+const Blog = require("./models/blog")
 //set up express
 const app = express()
 
@@ -23,6 +24,45 @@ app.set("view engine", "ejs")
 
 //middleware (connect css stylesheet)
 app.use(express.static("public"))
+
+//add new blog (~POST)
+app.get("/add", (req, res) => {
+    const myBlog = new Blog({
+        title: "my title2",
+        snippet: "my snippet2",
+        body: "my body2"
+    })
+    myBlog.save()
+        .then((result) => {
+            res.send(result)
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+})
+
+//get all blogs (~GET)
+app.get("/all-blogs", (req, res) => {
+    Blog.find()
+        .then((result) => {
+            res.send(result)
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+})
+
+//get single blog (~GET)
+app.get("/single-blog", (req, res) => {
+    Blog.findById("62d836f456d2fdd3333ad07c")
+        .then((result) => {
+            res.send(result)
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+})
+
 
 app.get("/", (req, res) => {
     const blogs = [
