@@ -7,11 +7,12 @@
     <%-include("./partials/nav.ejs")%>
 
     <div class="all-blogs">
-        <h2>All my blogs:</h2>
+        <h1>All my blogs:</h1>
         <% if (blogs.length > 0) { %>
             <% blogs.map((item) => { %>
-                <h3><%=item.name %></h3>
+                <h2><%=item.title %></h2>
                 <p><%=item.snippet %></p>
+                <p><%=item.body %></p>
            <% }) %>
        <% } else { %>
         <p>No blogs to display...</p>

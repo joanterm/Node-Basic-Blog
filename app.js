@@ -41,17 +41,6 @@ app.get("/add", (req, res) => {
         })
 })
 
-//get all blogs (~GET)
-app.get("/all-blogs", (req, res) => {
-    Blog.find()
-        .then((result) => {
-            res.send(result)
-        })
-        .catch((err) => {
-            console.log(err)
-        })
-})
-
 //get single blog (~GET)
 app.get("/single-blog", (req, res) => {
     Blog.findById("62d836f456d2fdd3333ad07c")
@@ -63,24 +52,29 @@ app.get("/single-blog", (req, res) => {
         })
 })
 
-
 app.get("/", (req, res) => {
-    const blogs = [
-        {name: "title1", snippet: "snippet 1..."},
-        {name: "title2", snippet: "snippet 2..."},
-        {name: "title3", snippet: "snippet 3..."}
-    ]
-    res.render("index", {title: "Home", blogs:blogs})
+    res.redirect("/blogs")
 })
 
 app.get("/about", (req, res) => {
     res.render("about", {title: "About"})
 })
 
+app.get("/blogs", (req, res) => {
+    Blog.find().sort({createdAt: -1}) //new first
+        .then((response) => {
+            res.render("index", {title: "Blogs", blogs: response})
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+})
+
 app.get("/blogs/create", (req, res) => {
     res.render("createBlogs", {title: "Create"})
 })
 
+//404
 app.use((req, res) => {
     res.status(404).render("404", {title: "Error"})
 })

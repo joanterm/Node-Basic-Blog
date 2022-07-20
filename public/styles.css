@@ -10,6 +10,7 @@ body {
     max-width: 90%;
     margin: 0 auto;
     text-align: center;
+    color: #262626
 }
 
 nav {
@@ -36,6 +37,7 @@ nav h1 {
     text-decoration: none;
     font-weight: 700;
     font-size: 1.25rem;
+    color: #262626;
 }
 
 .nav-div a:hover,
@@ -81,7 +83,7 @@ form textarea {
     padding-top: 3em;
 }
 
-.all-blogs h2 {
+.all-blogs h1 {
     padding-bottom: 1em;
 }
 
