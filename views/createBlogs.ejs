@@ -6,9 +6,9 @@
 <body>
     <%-include("./partials/nav.ejs")%>
 
-    <form action="#">
-        <label for="name">Name</label>
-        <input type="text" name="name" id="name">
+    <form action="/blogs" method="POST">
+        <label for="name">Title</label>
+        <input type="text" name="title" id="name">
         <label for="name">Snippet</label>
         <input type="text" name="snippet" id="snippet">
         <label for="info">Body</label>

@@ -24,22 +24,9 @@ app.set("view engine", "ejs")
 
 //middleware (connect css stylesheet)
 app.use(express.static("public"))
+// middleware (access form values)
+app.use(express.urlencoded({extended: true}))
 
-//add new blog (~POST)
-app.get("/add", (req, res) => {
-    const myBlog = new Blog({
-        title: "my title2",
-        snippet: "my snippet2",
-        body: "my body2"
-    })
-    myBlog.save()
-        .then((result) => {
-            res.send(result)
-        })
-        .catch((err) => {
-            console.log(err)
-        })
-})
 
 //get single blog (~GET)
 app.get("/single-blog", (req, res) => {
@@ -60,10 +47,23 @@ app.get("/about", (req, res) => {
     res.render("about", {title: "About"})
 })
 
+//( ~ GET ~ )
 app.get("/blogs", (req, res) => {
     Blog.find().sort({createdAt: -1}) //new first
         .then((response) => {
             res.render("index", {title: "Blogs", blogs: response})
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+})
+
+//( ~ POST ~ )
+app.post("/blogs", (req, res) => {
+    const newBlog = new Blog(req.body)
+    newBlog.save()
+        .then((response) => {
+            res.redirect("/blogs")
         })
         .catch((err) => {
             console.log(err)
