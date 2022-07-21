@@ -23,7 +23,7 @@ nav {
 
 nav h1 {
     font-size: 3rem;
-    color: rgb(238, 47, 146)
+    color: #ee5f9b;
 }
 
 .nav-div {
@@ -42,7 +42,7 @@ nav h1 {
 
 .nav-div a:hover,
 .nav-div a:focus {
-    color: rgb(238, 47, 146);
+    color: #449293;
 }
 
 form {
@@ -64,7 +64,7 @@ form button {
 }
 
 form button {
-    background-color: rgb(238, 47, 146);
+    background-color: #449293;
     color: white;
     font-family: inherit;
     font-weight: 700;
@@ -72,7 +72,7 @@ form button {
 }
 
 form button:hover {
-    background-color: rgb(231, 129, 181);
+    background-color: #94dee2;
 }
 form textarea {
     padding: 5em;

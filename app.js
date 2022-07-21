@@ -1,9 +1,11 @@
 const express = require("express")
 const mongoose = require("mongoose")
+const morgan = require("morgan")
 require('dotenv').config()
 const Blog = require("./models/blog")
 //set up express
 const app = express()
+app.use(morgan("dev"))
 
 //connect to mongoDB
 const dbUser = process.env.MONGOURI
@@ -17,8 +19,6 @@ mongoose.connect(dbUser)
         console.log(err)
     })
 
-// app.listen(3000)
-
 //set up EJS
 app.set("view engine", "ejs")
 
@@ -27,17 +27,6 @@ app.use(express.static("public"))
 // middleware (access form values)
 app.use(express.urlencoded({extended: true}))
 
-
-//get single blog (~GET)
-app.get("/single-blog", (req, res) => {
-    Blog.findById("62d836f456d2fdd3333ad07c")
-        .then((result) => {
-            res.send(result)
-        })
-        .catch((err) => {
-            console.log(err)
-        })
-})
 
 app.get("/", (req, res) => {
     res.redirect("/blogs")
@@ -72,6 +61,18 @@ app.post("/blogs", (req, res) => {
 
 app.get("/blogs/create", (req, res) => {
     res.render("createBlogs", {title: "Create"})
+})
+
+//( ~ GET ~ ) single blog
+app.get("/blogs/:id", (req, res) => {
+    const id = req.params.id
+    Blog.findById(id)
+        .then((response) => {
+            res.render("create", {blogs: response, title: "Blog by ID"})
+        })
+        .catch((err) => {
+            console.log(err)
+        })
 })
 
 //404
