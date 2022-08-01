@@ -12,7 +12,7 @@
             <% blogs.map((item) => { %>
                 <h2><%=item.title %></h2>
                 <p><%=item.snippet %></p>
-                <a href="/blogs/<%=item._id%>">Read more...</a>
+                <a class="link" href="/blogs/<%=item._id%>">Read More</a>
            <% }) %>
        <% } else { %>
         <p>No blogs to display...</p>

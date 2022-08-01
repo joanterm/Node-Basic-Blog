@@ -1,14 +1,17 @@
 const express = require("express")
+//to be able to use mongoDB
 const mongoose = require("mongoose")
 const morgan = require("morgan")
+//secure password with dotenv
 require('dotenv').config()
+//schema
 const Blog = require("./models/blog")
 //set up express
 const app = express()
 //connect morgan if desired
 app.use(morgan("dev"))
 
-//connect to mongoDB
+//connect to mongoDB and secure password
 const dbUser = process.env.MONGOURI
 mongoose.connect(dbUser)
     .then((result) => {
@@ -21,7 +24,6 @@ mongoose.connect(dbUser)
 
 //set up EJS
 app.set("view engine", "ejs")
-
 //middleware (connect css stylesheet)
 app.use(express.static("public"))
 // middleware (access form values)

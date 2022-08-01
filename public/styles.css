@@ -75,11 +75,12 @@ form button:hover {
     background-color: #94dee2;
 }
 form textarea {
-    padding: 5em;
+    padding: 1em 0 10em 1em;
     resize: none;
 }
 
-.all-blogs {
+.all-blogs,
+.about-paragraph {
     padding-top: 3em;
 }
 
@@ -87,6 +88,20 @@ form textarea {
     padding-bottom: 1em;
 }
 
+.all-blogs h2 {
+    margin-top: 2em;
+}
+
 .all-blogs p {
-    padding-bottom: 3em;
+    margin-bottom: 1em;
+}
+
+.link {
+    padding: 0.5em 1em;
+    color: #449293;
+}
+
+.link:hover,
+.link:focus {
+    color: #94dee2;
 }
