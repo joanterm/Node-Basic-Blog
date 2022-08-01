@@ -9,6 +9,7 @@
 * Morgan
 * mongoDB
 * Mongoose
+* vanilla CSS
 
 ![home image](./images/blog1.png)
 
