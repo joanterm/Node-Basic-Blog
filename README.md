@@ -12,4 +12,8 @@
 
 ![home image](./images/blog1.png)
 
+![form image](./images/blog2.png)
+
+![blog image](./images/blog3.png)
+
 
