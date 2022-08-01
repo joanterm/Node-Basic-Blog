@@ -10,6 +10,6 @@
 * mongoDB
 * Mongoose
 
-![home image](././images/blog1.png)
+![home image](./images/blog1.png)
 
 
