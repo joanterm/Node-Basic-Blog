@@ -5,11 +5,11 @@ require('dotenv').config()
 const Blog = require("./models/blog")
 //set up express
 const app = express()
+//connect morgan if desired
 app.use(morgan("dev"))
 
 //connect to mongoDB
 const dbUser = process.env.MONGOURI
-// const dbUser = "mongodb+srv://joannaterm:jk6HV@cluster0.a9gur.mongodb.net/?retryWrites=true&w=majority"
 mongoose.connect(dbUser)
     .then((result) => {
         console.log("connected to mongodb")
@@ -69,6 +69,18 @@ app.get("/blogs/:id", (req, res) => {
     Blog.findById(id)
         .then((response) => {
             res.render("create", {blogs: response, title: "Blog by ID"})
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+})
+
+//(~ DELETE ~) and redirect
+app.get("/blogs/delete/:id", (req, res) => {
+    const id = req.params.id
+    Blog.findByIdAndDelete(id)
+        .then((response) => {
+            res.redirect("/blogs")
         })
         .catch((err) => {
             console.log(err)
